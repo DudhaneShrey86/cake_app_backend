@@ -21,6 +21,7 @@ func SendError(c *gin.Context, err error) {
 	})
 }
 
+// getting all cakes of a particular category, also limiting it to 4 cakes for homepage
 func GetAllCakes(c *gin.Context) {
 	cakeColl := connection.CakeColl
 	id, err := primitive.ObjectIDFromHex(c.Query("category_id"))
@@ -53,6 +54,7 @@ func GetAllCakes(c *gin.Context) {
 	})
 }
 
+// getting a cake by id
 func GetCakeById(c *gin.Context) {
 	cakeColl := connection.CakeColl
 	id, err := primitive.ObjectIDFromHex(c.Param("id"))
@@ -73,6 +75,7 @@ func GetCakeById(c *gin.Context) {
 	})
 }
 
+// get a cake by search
 func GetCakeByName(c *gin.Context) {
 	cakeColl := connection.CakeColl
 	searchString := strings.ToLower(c.Query("search_string"))

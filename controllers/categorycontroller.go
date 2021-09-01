@@ -11,6 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+// getting all categories
 func GetAllCategories(c *gin.Context) {
 	categoryColl := connection.CategoryColl
 	cursor, err := categoryColl.Find(context.Background(), bson.M{})
@@ -31,6 +32,7 @@ func GetAllCategories(c *gin.Context) {
 	})
 }
 
+// getting a category by id
 func GetCategoryById(c *gin.Context) {
 	categoryColl := connection.CategoryColl
 	id, err := primitive.ObjectIDFromHex(c.Param("id"))
